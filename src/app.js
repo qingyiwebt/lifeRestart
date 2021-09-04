@@ -10,7 +10,7 @@ class App{
     #life;
     #pages;
     #talentSelected = new Set();
-    #totalMax=20;
+    #totalMax=1919810;
     #isEnd = false;
     #selectedExtendTalent = null;
     #hintTimeout;
@@ -102,10 +102,10 @@ class App{
                                 li.removeClass('selected')
                                 this.#talentSelected.delete(talent);
                             } else {
-                                if(this.#talentSelected.size==3) {
+                                /*if(this.#talentSelected.size==3) {
                                     this.hint('只能选3个天赋');
                                     return;
-                                }
+                                }*/
 
                                 const exclusive = this.#life.exclusive(
                                     Array.from(this.#talentSelected).map(({id})=>id),
