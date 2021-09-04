@@ -164,7 +164,7 @@ class App{
         const getBtnGroups = (name, min, max)=>{
             const group = $(`<li>${name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>`);
             const btnSub = $(`<span class="iconfont propbtn">&#xe6a5;</span>`);
-            const inputBox = $(`<input value="0">`);
+            const inputBox = $(`<input value="0" style="width: 3rem">`);
             const btnAdd = $(`<span class="iconfont propbtn">&#xe6a6;</span>`);
             group.append(btnSub);
             group.append(inputBox);
