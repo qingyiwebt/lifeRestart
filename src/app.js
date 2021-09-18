@@ -164,7 +164,7 @@ class App{
         const getBtnGroups = (name, min, max)=>{
             const group = $(`<li>${name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>`);
             const btnSub = $(`<span class="iconfont propbtn">&#xe6a5;</span>`);
-            const inputBox = $(`<input value="0" style="width: 3rem">`);
+            const inputBox = $(`<input value="0" style="width: 8rem">`);
             const btnAdd = $(`<span class="iconfont propbtn">&#xe6a6;</span>`);
             group.append(btnSub);
             group.append(inputBox);
@@ -205,10 +205,12 @@ class App{
             return {group, get, set};
         }
 
-        groups.CHR = getBtnGroups("颜值", 0, 959905); // 颜值 charm CHR
-        groups.INT = getBtnGroups("智力", 0, 959905); // 智力 intelligence INT
-        groups.STR = getBtnGroups("体质", 0, 959905); // 体质 strength STR
-        groups.MNY = getBtnGroups("家境", 0, 959905); // 家境 money MNY
+
+        let limitPerInput = 959905;
+        groups.CHR = getBtnGroups("颜值", 0, limitPerInput); // 颜值 charm CHR
+        groups.INT = getBtnGroups("智力", 0, limitPerInput); // 智力 intelligence INT
+        groups.STR = getBtnGroups("体质", 0, limitPerInput); // 体质 strength STR
+        groups.MNY = getBtnGroups("家境", 0, limitPerInput); // 家境 money MNY
 
         const ul = propertyPage.find('#propertyAllocation');
 
@@ -220,9 +222,9 @@ class App{
             .find('#random')
             .click(()=>{
                 let t = this.#totalMax;
-                const arr = [10, 10, 10, 10];
+                const arr = [limitPerInput, limitPerInput, limitPerInput, limitPerInput];
                 while(t>0) {
-                    const sub = Math.round(Math.random() * (Math.min(t, 10) - 1)) + 1;
+                    const sub = Math.round(Math.random() * (Math.min(t, limitPerInput) - 1)) + 1;
                     while(true) {
                         const select = Math.floor(Math.random() * 4) % 4;
                         if(arr[select] - sub <0) continue;
@@ -231,10 +233,10 @@ class App{
                         break;
                     }
                 }
-                groups.CHR.set(10 - arr[0]);
-                groups.INT.set(10 - arr[1]);
-                groups.STR.set(10 - arr[2]);
-                groups.MNY.set(10 - arr[3]);
+                groups.CHR.set(limitPerInput - arr[0]);
+                groups.INT.set(limitPerInput - arr[1]);
+                groups.STR.set(limitPerInput - arr[2]);
+                groups.MNY.set(limitPerInput - arr[3]);
             });
 
         propertyPage
