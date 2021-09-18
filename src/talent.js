@@ -43,7 +43,9 @@ class Talent {
     }
 
     talentRandom(include) {
-        return this.#talents;
+        return Object.keys(this.#talents).map(key => {
+            return this.#talents[key];
+        });
     }
 
     allocationAddition(talents) {
