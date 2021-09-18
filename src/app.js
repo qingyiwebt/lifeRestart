@@ -14,6 +14,7 @@ class App{
     #isEnd = false;
     #selectedExtendTalent = null;
     #hintTimeout;
+    $$rawTotalMax=1919810;
 
     async initial() {
         this.initPages();
@@ -77,7 +78,7 @@ class App{
         // Talent
         const talentPage = $(`
         <div id="main">
-            <div class="head" style="font-size: 1.6rem">天赋抽卡</div>
+            <div class="head" style="font-size: 1.6rem">恶臭抽卡</div>
             <button id="random" class="mainbtn" style="top: 50%;">114514连抽！</button>
             <ul id="talents" class="selectlist"></ul>
             <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">选择完成</button>
@@ -130,10 +131,10 @@ class App{
         talentPage
             .find('#next')
             .click(()=>{
-                if(this.#talentSelected.size<3) {
+                /*if(this.#talentSelected.size<3) {
                     this.hint('请至少选择3个天赋');
                     return;
-                }
+                }*/
                 this.#totalMax += this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
                 this.switch('property');
             })
@@ -329,7 +330,7 @@ class App{
                 this.#life.talentExtend(this.#selectedExtendTalent);
                 this.#selectedExtendTalent = null;
                 this.#talentSelected.clear();
-                this.#totalMax = 1919810;
+                this.#totalMax = $$rawTotalMax;
                 this.#isEnd = false;
                 this.switch('index');
             });
@@ -367,7 +368,7 @@ class App{
                 clear: ()=>{
                     talentPage.find('ul.selectlist').empty();
                     talentPage.find('#random').show();
-                    this.#totalMax = 1919810;
+                    this.#totalMax = $$rawTotalMax;
                 },
             },
             property: {
