@@ -330,7 +330,7 @@ class App{
                 this.#life.talentExtend(this.#selectedExtendTalent);
                 this.#selectedExtendTalent = null;
                 this.#talentSelected.clear();
-                this.#totalMax = $$rawTotalMax;
+                this.#totalMax = this.$$rawTotalMax;
                 this.#isEnd = false;
                 this.switch('index');
             });
@@ -368,7 +368,7 @@ class App{
                 clear: ()=>{
                     talentPage.find('ul.selectlist').empty();
                     talentPage.find('#random').show();
-                    this.#totalMax = $$rawTotalMax;
+                    this.#totalMax = this.$$rawTotalMax;
                 },
             },
             property: {
